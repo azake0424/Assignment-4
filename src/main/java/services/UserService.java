@@ -1,12 +1,13 @@
 package services;
 
 import interfaces.IUserRepository;
+import interfaces.IUserService;
 import models.UserLoginData;
 import models.Users;
 import repository.UserRepository;
 
 
-public class UserService implements IUserService{
+public class UserService implements IUserService {
     private IUserRepository userrepo = new UserRepository();
 
     @Override

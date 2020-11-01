@@ -5,7 +5,7 @@
          version="4.0">
 
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -23,4 +23,69 @@
         <servlet-name>Authentication</servlet-name>
         <url-pattern>/auth</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Main</servlet-name>
+        <servlet-class>controllers.Main</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Main</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Basket</servlet-name>
+        <servlet-class>controllers.Basket</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Basket</servlet-name>
+        <url-pattern>/basket</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddBasket</servlet-name>
+        <servlet-class>controllers.AddBasket</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddBasket</servlet-name>
+        <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>controllers.Search</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>controllers.Admin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminFunctions</servlet-name>
+        <servlet-class>controllers.AdminFunctions</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminFunctions</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>PlusCount</servlet-name>
+        <servlet-class>controllers.PlusCount</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PlusCount</servlet-name>
+        <url-pattern>/plus</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>MinusCount</servlet-name>
+        <servlet-class>controllers.MinusCount</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MinusCount</servlet-name>
+        <url-pattern>/minus</url-pattern>
+    </servlet-mapping>
+
 </web-app>

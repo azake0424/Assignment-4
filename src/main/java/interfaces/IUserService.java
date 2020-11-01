@@ -1,4 +1,4 @@
-package services;
+package interfaces;
 
 import models.UserLoginData;
 import models.Users;

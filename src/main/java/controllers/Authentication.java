@@ -1,7 +1,7 @@
 package controllers;
 
 import models.Users;
-import services.IUserService;
+import interfaces.IUserService;
 import services.UserService;
 
 import javax.servlet.ServletException;

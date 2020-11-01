@@ -5,6 +5,9 @@ import models.Users;
 
 
 public interface IUserRepository extends IEntityRepository<Users> {
+
+    //Users getUserId(String username);
+
     Users getUserByID(long userId);
 
     Users findUserByLogin(UserLoginData data);
