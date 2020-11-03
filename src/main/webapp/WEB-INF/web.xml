@@ -32,11 +32,11 @@
         <url-pattern>/main</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Basket</servlet-name>
-        <servlet-class>controllers.Basket</servlet-class>
+        <servlet-name>Cart</servlet-name>
+        <servlet-class>controllers.Cart</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Basket</servlet-name>
+        <servlet-name>Cart</servlet-name>
         <url-pattern>/basket</url-pattern>
     </servlet-mapping>
     <servlet>
@@ -64,28 +64,101 @@
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>AdminFunctions</servlet-name>
-        <servlet-class>controllers.AdminFunctions</servlet-class>
+        <servlet-name>Edit</servlet-name>
+        <servlet-class>controllers.Edit</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AdminFunctions</servlet-name>
+        <servlet-name>Edit</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddBook</servlet-name>
+        <servlet-class>controllers.AddBook</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddBook</servlet-name>
+        <url-pattern>/addbook</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Update</servlet-name>
+        <servlet-class>controllers.Update</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Update</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>controllers.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Updateuser</servlet-name>
+        <servlet-class>controllers.Updateuser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Updateuser</servlet-name>
+        <url-pattern>/updateuser</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>controllers.Profile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ListUser</servlet-name>
+        <servlet-class>controllers.ListUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListUser</servlet-name>
+        <url-pattern>/list</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Deletebook</servlet-name>
+        <servlet-class>controllers.Deletebook</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deletebook</servlet-name>
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>PlusCount</servlet-name>
-        <servlet-class>controllers.PlusCount</servlet-class>
+        <servlet-name>DeleteFromBasket</servlet-name>
+        <servlet-class>controllers.DeleteFromBasket</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>PlusCount</servlet-name>
-        <url-pattern>/plus</url-pattern>
+        <servlet-name>DeleteFromBasket</servlet-name>
+        <url-pattern>/deletefrombasket</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>MinusCount</servlet-name>
-        <servlet-class>controllers.MinusCount</servlet-class>
+        <servlet-name>Jersey Rest Service</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>main</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
-        <servlet-name>MinusCount</servlet-name>
-        <url-pattern>/minus</url-pattern>
+        <servlet-name>Jersey Rest Service</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
+
+    <context-param>
+        <param-name>Basket</param-name>
+        <param-value>Basket</param-value>
+    </context-param>
+    <!--<context-param>
+        <param-name>Profile</param-name>
+        <param-value>Profile</param-value>
+    </context-param>
+    <context-param>
+        <param-name>Main</param-name>
+        <param-value>Main</param-value>
+    </context-param>-->
 </web-app>

@@ -1,11 +1,12 @@
 package models;
 
 public class Users {
-    private long id;
+    private int id;
     private String name;
     private String email;
     private String username;
     private String password;
+    private String role;
 
     public Users(){
 
@@ -18,7 +19,7 @@ public class Users {
         this.password = password;
     }
 
-    public Users(long id, String name, String email, String username, String password){
+    public Users(int id, String name, String email, String username, String password){
         this.id = id;
         this.name = name;
         this.email = email;
@@ -26,18 +27,18 @@ public class Users {
         this.password = password;
     }
 
-    public Users(long id, String name, String email, String username){
+    public Users(int id, String name, String email, String username){
         this.id = id;
         this.name = name;
         this.email = email;
         this.username = username;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -71,5 +72,13 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

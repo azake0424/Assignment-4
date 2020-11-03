@@ -35,40 +35,17 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public void update(Users entity) {
-        String sql = "UPDATE users " +
-                "SET ";
-        int c = 0;
-        if (entity.getName() != null) {
-            sql += "name=?, "; c++;
-        }
-        if (entity.getEmail() != null) {
-            sql += "email=?, "; c++;
-        }
-        if (entity.getPassword() != null) {
-            sql += "password=?, "; c++;
-        }
-
-        sql = sql.substring(0, sql.length() - 2);
-
-        sql += " WHERE username = ?";
-
+        String sql = "UPDATE users SET name = ?, email = ?, username = ?, password = ? WHERE id = ?";
         try {
-            int i = 1;
-            PreparedStatement stmt = dbrepo.getConnection().prepareStatement(sql);
-            if (entity.getName() != null) {
-                stmt.setString(i++, entity.getName());
-            }
-            if (entity.getEmail() != null) {
-                stmt.setString(i++, entity.getEmail());
-            }
-            if (entity.getPassword() != null) {
-                stmt.setString(i++, entity.getPassword());
-            }
-            stmt.setString(i++, entity.getUsername());
-
-            stmt.execute();
+            PreparedStatement preparedStatement = dbrepo.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, entity.getName());
+            preparedStatement.setString(2, entity.getEmail());
+            preparedStatement.setString(3, entity.getUsername());
+            preparedStatement.setString(4, entity.getPassword());
+            preparedStatement.setInt(5, entity.getId());
+            preparedStatement.execute();
         } catch (SQLException ex) {
-            throw new BadRequestException("Cannot run SQL statement: " + ex.getMessage());
+            throw new BadRequestException("Cannot run sql statement : " + ex.getSQLState());
         }
     }
 
@@ -76,6 +53,7 @@ public class UserRepository implements IUserRepository {
     public void remove(Users entity) {
 
     }
+
 
     @Override
     public List<Users> query(String sql) {
@@ -85,11 +63,10 @@ public class UserRepository implements IUserRepository {
             LinkedList<Users> users = new LinkedList<>();
             while (rs.next()) {
                 Users user = new Users(
-                        rs.getLong("id"),
+                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("username")
-                        //rs.getString("password"),
                 );
                 users.add(user);
             }
@@ -106,7 +83,7 @@ public class UserRepository implements IUserRepository {
             ResultSet rs = stmt.executeQuery(sql);
             if (rs.next()) {
                 return new Users(
-                        rs.getLong("id"),
+                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("username")
@@ -116,6 +93,11 @@ public class UserRepository implements IUserRepository {
             throw new BadRequestException("Cannot run SQL statement: " + ex.getMessage());
         }
         return null;
+    }
+
+    @Override
+    public List<Users> getAllUsers() {
+        return query("SELECT * FROM users WHERE role IS NULL");
     }
 
     public Users getUserByID(long id) {
@@ -132,7 +114,7 @@ public class UserRepository implements IUserRepository {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new Users(
-                        rs.getLong("id"),
+                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("username"),
@@ -153,7 +135,7 @@ public class UserRepository implements IUserRepository {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new Users(
-                        rs.getLong("id"),
+                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("username"),
@@ -166,7 +148,16 @@ public class UserRepository implements IUserRepository {
         return null;
     }
 
-    //public Users getUserId(String username) {
-    //    return null;
-   // }
+    @Override
+    public void getRoleUser(Users entity) {
+        String sql = "SELECT role FROM users WHERE name = '" + entity.getName() + "'";
+        try {
+            PreparedStatement preparedStatement = dbrepo.getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, entity.getName());
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            throw new BadRequestException("Cannot run sql statement : " + ex.getSQLState());
+        }
+    }
+
 }

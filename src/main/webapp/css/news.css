@@ -1,0 +1,55 @@
+.newsDiv{
+    border: 1px solid black;
+    width: 80%;
+    height: 200px;
+}
+
+.div-1{
+    width: 40%;
+    float: left
+}
+
+.div-2{
+    width: 60%;
+    float: right
+}
+
+.box2{
+    padding-left: 1050px;
+    color: white;
+    text-decoration: none;
+}
+
+.box2>a:hover{
+    color: #73B6E1;
+}
+.w_sidebar{
+    border: 1px solid #EBEBEB;
+}
+
+
+.faq{
+    width: 17%;
+    float: right;
+    margin-top: 30px;
+    margin-right: 60px;
+}
+
+.news{
+    float: left;
+}
+
+.sky-form {
+    margin-top: -10px;
+}
+
+.sky-form h4{
+    margin-top: 10px;
+    background: #ECECEC;
+    padding: 15px 20px;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    font-size:16px;
+    font-family: 'Lora-Regular';
+}

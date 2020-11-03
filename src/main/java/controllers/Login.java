@@ -15,23 +15,25 @@ public class Login extends HttpServlet {
     private final IUserService userService = new UserService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserLoginData userLoginData = new UserLoginData(request.getParameter("username"), request.getParameter("password"));
+        Cookie cookie = new Cookie("role",userLoginData.getUsername());
+        response.addCookie(cookie);
+
+
         if (checkUserExistence(userLoginData)) {
-            Cookie cookie = new Cookie("username", userLoginData.getUsername());
-            response.addCookie(cookie);
-        } else {
+            HttpSession session = request.getSession();
+            session.setAttribute("username",userLoginData.getUsername());
+            response.sendRedirect(request.getContextPath() + "/main");
+        }else {
             response.sendRedirect(request.getContextPath() + "/login");
         }
-
-        response.sendRedirect(request.getContextPath() + "/main");
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        }
 
-    }
-
-    public boolean checkUserExistence(UserLoginData userLoginData) {
-        Users users = userService.checkUserExistence(userLoginData);
-        return users != null;
+        public boolean checkUserExistence(UserLoginData userLoginData) {
+            Users users = userService.checkUserExistence(userLoginData);
+            return users != null;
     }
 }

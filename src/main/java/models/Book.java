@@ -1,13 +1,9 @@
 package models;
 
 public class Book {
-    private long bookId;
+    private int bookId;
     private String title;
     private String author;
-    //private String description;
-    //private String genre;
-    //private int price;
-    //private int graduateyear;
     private String isbn;
     private int count;
     private String img;
@@ -18,31 +14,25 @@ public class Book {
     public Book(String title, String author, String isbn, int count, String img) {
         this.title = title;
         this.author = author;
-        //this.description = description;
-        //this.price = price;
-        //this.graduateyear = graduateyear;
         this.isbn = isbn;
         this.count = count;
         this.img = img;
     }
 
-    public Book(long bookId, String title, String author, String isbn, int count, String img) {
+    public Book(int bookId, String title, String author, String isbn, int count, String img) {
         this.bookId = bookId;
         this.title = title;
         this.author = author;
-        //this.description = description;
-        //this.price = price;
-        //this.graduateyear = graduateyear;
         this.isbn = isbn;
         this.count = count;
         this.img = img;
     }
 
-    public long getBookId() {
+    public int getBookId() {
         return bookId;
     }
 
-    public void setBookId(long bookId) {
+    public void setBookId(int bookId) {
         this.bookId = bookId;
     }
 
